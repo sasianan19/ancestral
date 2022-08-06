@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'totemProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
+        'NAME': 'django2',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
