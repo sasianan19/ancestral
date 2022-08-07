@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from totemApp.views import *  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('add_country', addCountry, name='countryForm'),
+    path('add_vertebrate', addVertebrate, name='vertebrateForm'),
+    path('add_invertebrate', addInvertebrate, name='invertebrateForm'),
+
+
 ]
