@@ -19,9 +19,10 @@ from totemApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add_country', addCountry, name='countryForm'),
-    path('add_vertebrate', addVertebrate, name='vertebrateForm'),
-    path('add_invertebrate', addInvertebrate, name='invertebrateForm'),
+
+    # The following two paths, 'create' & 'update/delete', are for dev use only (for now)- site/app users should not be creating,
+    # updating, or deleting anything in/from database tables 
+    path('create', create_view, name='createForms'),
 
 
 ]
