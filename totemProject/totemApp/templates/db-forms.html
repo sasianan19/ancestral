@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+        <div class="container">
+            <!-- The following two forms are commented out because they were only used to add a SET number of continents
+                and animal classes; 7 continents and 11 classifications. -->
+            <!-- <form method="POST">
+              <fieldset>
+                <legend>Add Continent</legend>
+                {% csrf_token %}
+                {{ ContinentsForm.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </fieldset>
+            </form> -->
+                 <!-- <form method="POST">
+                <fieldset>
+                  <legend>Add Animal Class</legend>
+                  {% csrf_token %}
+                  {{ AnimalClassForm.as_p }}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+            </form> -->
+
+            
+            <form method="POST">
+                <fieldset>
+                  <legend>Add Country</legend>
+                  {% csrf_token %}
+                  {{ CountriesForm.as_p }}
+                  <button type="submit" class="btn btn-primary">ADD</button>
+                </fieldset>
+            </form>
+
+            <br>
+            <br>
+
+            <form method="POST">
+                <fieldset>
+                  <legend>Add Vertebrate</legend>
+                  {% csrf_token %}
+                  {{ VertebratesForm.as_p }}
+                  <button type="submit" class="btn btn-primary">ADD</button>
+                </fieldset>
+            </form>
+
+            <br>
+            <br>
+
+            <form method="POST">
+                <fieldset>
+                  <legend>Add Invertebrate</legend>
+                  {% csrf_token %}
+                  {{ InvertebratesForm.as_p }}
+                  <button type="submit" class="btn btn-primary">ADD</button>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
