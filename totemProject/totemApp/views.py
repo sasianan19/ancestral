@@ -47,7 +47,9 @@ def countryListView(request):
     countries = Countries.objects.all()
     return render(request, 'country_list_view.html', {'countries': countries})
 
-# def countryDetailView(request, id):
+def countryDetailView(request, id):
+    country = Countries.objects.get(id=id)
+    return render(request, 'country_detail_view.html', {'country': country})
 
 
 
@@ -57,6 +59,10 @@ def keywordListView(request):
     keywords = Keywords.objects.all()
     return render(request, 'keyword_list_view.html', {'keywords': keywords})
 
+def keywordDetailView(request, id):
+    keyword = Keywords.objects.get(id=id)
+    return render(request, 'keyword_detail_view.html', {'keyword': keyword})
+
 
 
 # Vertebrates list, detail, update, & delete views
@@ -64,10 +70,20 @@ def vertebrateListView(request):
     vertebrates = Vertebrates.objects.all()
     return render(request, 'vertebrate_list_view.html', {'vertebrates': vertebrates})
 
+def vertebrateDetailView(request, id):
+    vertebrate = Vertebrates.objects.get(id=id)
+    vertebrates = Vertebrates.objects.all()
+    return render(request, 'vertebrate_detail_view.html', {'vertebrate': vertebrate, 'vertebrates': vertebrates})
+
 
 
 # Invertebrates list, detail, update, & delete views
 def invertebrateListView(request):
     invertebrates = Invertebrates.objects.all()
     return render(request, 'invertebrate_list_view.html', {'invertebrates': invertebrates})
+
+def invertebrateDetailView(request, id):
+    invertebrate = Invertebrates.objects.get(id=id)
+    invertebrates = Invertebrates.objects.all()
+    return render(request, 'invertebrate_detail_view.html', {'invertebrate': invertebrate, 'invertebrates': invertebrates})
 
