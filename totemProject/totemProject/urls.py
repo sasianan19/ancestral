@@ -24,9 +24,18 @@ urlpatterns = [
     # updating, or deleting anything in/from database tables 
     path('create', createView, name='createForms'),
     path('countryList', countryListView, name='countryList'),
+    path('countryDetail/<id>', countryDetailView, name='countryDetail'),
+
     path('keywordList', keywordListView, name='keywordList'),
+    path('keywordDetail/<id>', keywordDetailView, name='keywordDetail'),
+
     path('vertebrateList', vertebrateListView, name='vertebrateList'),
+    path('vertebrateDetail/<id>', vertebrateDetailView, name='vertebrateDetail'),
+
+
     path('invertebrateList', invertebrateListView, name='invertebrateList'),
+    path('invertebrateDetail/<id>', invertebrateDetailView, name='invertebrateDetail'),
+
     
 
 ]
