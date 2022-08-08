@@ -43,6 +43,18 @@
             <br>
 
             <form method="POST">
+              <fieldset>
+                <legend>Add Keyword</legend>
+                {% csrf_token %}
+                {{ addKeyword.as_p }}
+                <button type="submit" class="btn btn-primary">ADD</button>
+              </fieldset>
+          </form>
+
+          <br>
+          <br>
+
+            <form method="POST">
                 <fieldset>
                   <legend>Add Vertebrate</legend>
                   {% csrf_token %}
