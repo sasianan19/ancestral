@@ -23,6 +23,9 @@ urlpatterns = [
     # The following two paths, 'create' & 'update/delete', are for dev use only (for now)- site/app users should not be creating,
     # updating, or deleting anything in/from database tables 
     path('create', create_view, name='createForms'),
-
+    path('country_list', country_list_view, name='countryListView'),
+    path('vertebrate_list', vertebrate_list_view, name='vertebrateListView'),
+    path('invertebrate_list', invertebrate_list_view, name='invertebrateList'),
+    path('keyword_list', keyword_list_view, name='keywordList'),
 
 ]
