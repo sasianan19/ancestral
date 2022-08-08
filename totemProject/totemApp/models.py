@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Continents(models.Model):
     # "unique = True" ensures that same value cannot be entered again if it is already present in database 
     continent = models.CharField(max_length = 50, unique = True)
@@ -28,6 +26,12 @@ class Countries(models.Model):
     def __str__(self):
         return self.country
 
+class Keywords(models.Model):
+    keyword = models.CharField(max_length = 100, unique = True)
+
+    def __str__(self):
+        return self.keyword
+
 class Vertebrates(models.Model):
     # "models.ForeignKey(AnimalClass, ...)" and "models.ForeignKey(Countries, ...)" accesses the list of animal classes & countries in the 
     # AnimalClass & Countries models so specific classifications and countries can be assigned to a vertebrate or invertebrate via a foreign key 
@@ -35,10 +39,12 @@ class Vertebrates(models.Model):
     classification = models.ForeignKey(AnimalClass, on_delete = models.CASCADE)
     animal = models.CharField(max_length = 70)
     country = models.ForeignKey(Countries, on_delete = models.CASCADE)
-    meaning = models.TextField(max_length = 5000) 
+    meaning = models.TextField(max_length = 5000)
+    keywords = models.ManyToManyField(Keywords) 
 
 class Invertebrates(models.Model):
     classification = models.ForeignKey(AnimalClass, on_delete = models.CASCADE)
     animal = models.CharField(max_length = 70)
     country = models.ForeignKey(Countries, on_delete = models.CASCADE)
     meaning = models.TextField(max_length = 5000) 
+    keywords = models.ManyToManyField(Keywords)
