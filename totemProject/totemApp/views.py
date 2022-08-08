@@ -8,6 +8,7 @@ from totemApp.forms import *
 # Credit to Rafiq Hilali for this code @ https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page
 def create_view(request):
     addCountry = CountriesForm()
+    addKeyword = KeywordsForm()
     addVertebrate = VertebratesForm()
     addInvertebrate = InvertebratesForm()
     if request.method == 'POST':
@@ -15,6 +16,11 @@ def create_view(request):
             addCountry = CountriesForm(request.POST)
             if addCountry.is_valid():
                 addCountry.save()
+                return redirect('createForms')
+        if 'c_r_u_dKeywords' in request.POST:
+            addKeyword = KeywordsForm(request.POST)
+            if addKeyword.is_valid():
+                addKeyword.save()
                 return redirect('createForms')
         if 'c_r_u_dVertebrates' in request.POST:
             addVertebrate = VertebratesForm(request.POST)
@@ -28,8 +34,30 @@ def create_view(request):
                 return redirect('createForms')
     context = {
         "addCountry": addCountry,
+        "addKeyword": addKeyword,
         "addVertebrate": addVertebrate,
         "addInvertebrate": addInvertebrate,
     }
     return render(request, 'create_view.html', context=context)
 
+
+
+def country_list_view(request):
+    countries = Countries.objects.all()
+   
+    return render(request, 'country_list_view.html', {'countries': countries})
+
+def vertebrate_list_view(request):
+    vertebrates = Vertebrates.objects.all()
+   
+    return render(request, 'vertebrate_list_view.html', {'vertebrates': vertebrates})
+
+def invertebrate_list_view(request):
+    invertebrates = Invertebrates.objects.all()
+   
+    return render(request, 'invertebrate_list_view.html', {'invertebrates': invertebrates})
+
+def keyword_list_view(request):
+    keywords = Keywords.objects.all()
+   
+    return render(request, 'keyword_list_view.html', {'keywords': keywords})
