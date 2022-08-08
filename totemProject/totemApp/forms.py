@@ -26,18 +26,37 @@ class CountriesForm(forms.ModelForm):
         fields = ['country', 'continent']
         labels = {'country': "Country", 'continent': "Continent"}
 
+class KeywordsForm(forms.ModelForm):
+    c_r_u_dKeywords = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
+    class Meta:
+        model = Keywords
+        fields = ['keyword']
+        labels = {'keyword': "Keyword"}
+
 class VertebratesForm(forms.ModelForm):
     c_r_u_dVertebrates = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    # Credit to Alice Campkin for multiple choice field code @ https://medium.com/swlh/django-forms-for-many-to-many-fields-d977dec4b024
+    keywords = forms.ModelMultipleChoiceField(
+        queryset=Keywords.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
 
     class Meta:
         model = Vertebrates
-        fields = ['classification', 'animal', 'country', 'meaning']
-        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning"}
+        fields = ['classification', 'animal', 'country', 'meaning', 'keywords']
+        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords"}
 
 class InvertebratesForm(forms.ModelForm):
     c_r_u_dInvertebrates = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    keywords = forms.ModelMultipleChoiceField(
+        queryset=Keywords.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
     
     class Meta:
         model = Invertebrates
-        fields = ['classification', 'animal', 'country', 'meaning']
-        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning"}
+        fields = ['classification', 'animal', 'country', 'meaning', 'keywords']
+        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords"}
