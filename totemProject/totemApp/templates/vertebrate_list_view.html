@@ -12,11 +12,7 @@
  
             {% for vertebrate in vertebrates %}
          
-            <p>Classification: {{ vertebrate.classification }}</p>
-            <p>Animal: {{ vertebrate.animal }}</p>
-            <p>Country: {{ vertebrate.country }} | Continent: {{ vertebrate.country.continent }}</p>
-            <p>Symbolic Meaning: {{ vertebrate.meaning }}</p>
-            <p>Keywords: {{ vertebrate.keywords}}</p>
+            {{ vertebrate }}
             <hr/>
          
             {% endfor %}
