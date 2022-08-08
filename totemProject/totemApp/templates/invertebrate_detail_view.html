@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Invertebrate Detail</title>
+	</head>
+	<body>
+        <div class="main">
+          
+            <p>Classification: {{ invertebrate.classification }}</p>
+            <p>Animal: {{ invertebrate.animal }}</p>
+            <p>Country: {{ invertebrate.country }} | Continent: {{ invertebrate.country.continent }}</p>
+            <p>Symbolic Meaning: {{ invertebrate.meaning }}</p>
+            <p> Keywords: 
+                {% for keyword in invertebrate.keywords.all %}
+                    {{ keyword }},
+                {% endfor %} </p>       
+            <hr/>
+                  
+        </div>
+    </body>
+</html>
