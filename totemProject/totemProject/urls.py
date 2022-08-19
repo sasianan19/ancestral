@@ -22,19 +22,23 @@ urlpatterns = [
 
     # The following two paths, 'create' & 'update/delete', are for dev use only (for now)- site/app users should not be creating,
     # updating, or deleting anything in/from database tables 
-    path('create', createView, name='createForms'),
-    path('countryList', countryListView, name='countryList'),
-    path('countryDetail/<id>', countryDetailView, name='countryDetail'),
+    path('create', createEntry),
 
-    path('keywordList', keywordListView, name='keywordList'),
-    path('keywordDetail/<id>', keywordDetailView, name='keywordDetail'),
+    path('countries', countryIndex, name='countryIndex'),
+    path('updateCountry/<country_id>', updateCountry),
+    path('deleteCountry/<country_id>', deleteCountry),
 
-    path('vertebrateList', vertebrateListView, name='vertebrateList'),
-    path('vertebrateDetail/<id>', vertebrateDetailView, name='vertebrateDetail'),
+    path('keywords', keywordIndex, name='keywordIndex'),
+    path('updateKeyword/<keyword_id>', updateKeyword),
+    path('deleteKeyword/<keyword_id>', deleteKeyword),
 
+    path('vertebrates', vertebrateIndex, name='vertebrateIndex'),
+    path('updateVertebrate/<vertebrate_id>', updateVertebrate),
+    path('deleteVertebrate/<vertebrate_id>', deleteVertebrate),
 
-    path('invertebrateList', invertebrateListView, name='invertebrateList'),
-    path('invertebrateDetail/<id>', invertebrateDetailView, name='invertebrateDetail'),
+    path('invertebrates', invertebrateIndex, name='invertebrateIndex'),
+    path('updateInvertebrate/<invertebrate_id>', updateInvertebrate),
+    path('deleteInvertebrate/<invertebrate_id>', deleteInvertebrate),
 
     
 

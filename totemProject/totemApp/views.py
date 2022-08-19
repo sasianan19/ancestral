@@ -1,12 +1,37 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from totemApp.models import *
 from totemApp.forms import * 
 
 # Create your views here.
+# To be optimized later:
+# def createView(request):
+#     addCountry = CountriesForm()
+#     addKeyword = KeywordsForm()
+#     addVertebrate = VertebratesForm()
+#     addInvertebrate = InvertebratesForm()
+#     forms = [addCountry, addKeyword, addVertebrate, addInvertebrate]
+#     crud_widgets = ['c_r_u_dCountries', 'c_r_u_dKeywords', 'c_r_u_dVertebrates', 'c_r_u_dInvertebrates']
+#     if request.method == 'POST':
+#         for i in range(len(crud_widgets)):
+#             if crud_widgets[i] in request.POST:
+#                 for j in range(len(forms)):
+#                     form = forms[j](request.POST)
+#                     if form.is_valid():
+#                         form.save()
+#                         return redirect('createForms')
+#     context = {
+#         "addCountry": addCountry,
+#         "addKeyword": addKeyword,
+#         "addVertebrate": addVertebrate,
+#         "addInvertebrate": addInvertebrate,
+#     }
+#     return render(request, 'create_view.html', context=context)
 
-# "create_view" is for adding to database tables
+
+# "createEntry" is for adding to database tables
 # Credit to Rafiq Hilali for this code @ https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page
-def createView(request):
+def createEntry(request):
     addCountry = CountriesForm()
     addKeyword = KeywordsForm()
     addVertebrate = VertebratesForm()
@@ -16,22 +41,22 @@ def createView(request):
             addCountry = CountriesForm(request.POST)
             if addCountry.is_valid():
                 addCountry.save()
-                return redirect('countryList')
+                return redirect('countryIndex')
         if 'c_r_u_dKeywords' in request.POST:
             addKeyword = KeywordsForm(request.POST)
             if addKeyword.is_valid():
                 addKeyword.save()
-                return redirect('keywordList')
+                return redirect('keywordIndex')
         if 'c_r_u_dVertebrates' in request.POST:
             addVertebrate = VertebratesForm(request.POST)
             if addVertebrate.is_valid():
                 addVertebrate.save()
-                return redirect('vertebrateList')
+                return redirect('vertebrateIndex')
         if 'c_r_u_dInvertebrates' in request.POST:
             addInvertebrate = InvertebratesForm(request.POST)
             if addInvertebrate.is_valid():
                 addInvertebrate.save()
-                return redirect('invertebrateList')
+                return redirect('invertebrateIndex')
     context = {
         "addCountry": addCountry,
         "addKeyword": addKeyword,
@@ -42,48 +67,112 @@ def createView(request):
 
 
 
-# Countries list, detail, update, & delete views
-def countryListView(request):
+# Countries index, update, & delete views
+def countryIndex(request):
     countries = Countries.objects.all()
-    return render(request, 'country_list_view.html', {'countries': countries})
+    return render(request, 'country_index_view.html', {'countries': countries})
 
-def countryDetailView(request, id):
-    country = Countries.objects.get(id=id)
-    return render(request, 'country_detail_view.html', {'country': country})
+def updateCountry(request, country_id):
+    country_id = int(country_id)
+    try:
+        country = Countries.objects.get(id=country_id)
+    except Countries.DoesNotExist:
+        return redirect('countryIndex')
+    countryForm = CountriesForm(request.POST or None, instance = country)
+    if countryForm.is_valid():
+        countryForm.save()
+        return redirect ('countryIndex')
+    return render(request, 'country_update_view.html', {'countryForm': countryForm})
+
+def deleteCountry(request, country_id):
+    country_id = int(country_id)
+    try:
+        country = Countries.objects.get(id=country_id)
+    except Countries.DoesNotExist:
+        return redirect('countryIndex')
+    country.delete()
+    return redirect('countryIndex')
 
 
 
-
-# Keywords list, detail, update, & delete views
-def keywordListView(request):
+# Keywords index, update, & delete views
+def keywordIndex(request):
     keywords = Keywords.objects.all()
-    return render(request, 'keyword_list_view.html', {'keywords': keywords})
+    return render(request, 'keyword_index_view.html', {'keywords': keywords})
 
-def keywordDetailView(request, id):
-    keyword = Keywords.objects.get(id=id)
-    return render(request, 'keyword_detail_view.html', {'keyword': keyword})
+def updateKeyword(request, keyword_id):
+    keyword_id = int(keyword_id)
+    try:
+        keyword = Keywords.objects.get(id=keyword_id)
+    except Keywords.DoesNotExist:
+        return redirect('keywordIndex')
+    keywordForm = KeywordsForm(request.POST or None, instance = keyword)
+    if keywordForm.is_valid():
+        keywordForm.save()
+        return redirect ('keywordIndex')
+    return render(request, 'keyword_update_view.html', {'keywordForm': keywordForm})
+
+def deleteKeyword(request, keyword_id):
+    keyword_id = int(keyword_id)
+    try:
+        keyword = Keywords.objects.get(id=keyword_id)
+    except Keywords.DoesNotExist:
+        return redirect('keywordIndex')
+    keyword.delete()
+    return redirect('keywordIndex')
 
 
 
-# Vertebrates list, detail, update, & delete views
-def vertebrateListView(request):
+# Vertebrates index, update, & delete views
+def vertebrateIndex(request):
     vertebrates = Vertebrates.objects.all()
-    return render(request, 'vertebrate_list_view.html', {'vertebrates': vertebrates})
+    return render(request, 'vertebrate_index_view.html', {'vertebrates': vertebrates})
 
-def vertebrateDetailView(request, id):
-    vertebrate = Vertebrates.objects.get(id=id)
-    vertebrates = Vertebrates.objects.all()
-    return render(request, 'vertebrate_detail_view.html', {'vertebrate': vertebrate, 'vertebrates': vertebrates})
+def updateVertebrate(request, vertebrate_id):
+    vertebrate_id = int(vertebrate_id)
+    try:
+        vertebrate = Vertebrates.objects.get(id=vertebrate_id)
+    except Vertebrates.DoesNotExist:
+        return redirect('vertebrateIndex')
+    vertebrateForm = VertebratesForm(request.POST or None, instance = vertebrate)
+    if vertebrateForm.is_valid():
+        vertebrateForm.save()
+        return redirect ('vertebrateIndex')
+    return render(request, 'vertebrate_update_view.html', {'vertebrateForm': vertebrateForm})
+
+def deleteVertebrate(request, vertebrate_id):
+    vertebrate_id = int(vertebrate_id)
+    try:
+        vertebrate = Vertebrates.objects.get(id=vertebrate_id)
+    except Vertebrates.DoesNotExist:
+        return redirect('vertebrateIndex')
+    vertebrate.delete()
+    return redirect('vertebrateIndex')
 
 
 
-# Invertebrates list, detail, update, & delete views
-def invertebrateListView(request):
+# Invertebrates index, update, & delete views
+def invertebrateIndex(request):
     invertebrates = Invertebrates.objects.all()
-    return render(request, 'invertebrate_list_view.html', {'invertebrates': invertebrates})
+    return render(request, 'invertebrate_index_view.html', {'invertebrates': invertebrates})
 
-def invertebrateDetailView(request, id):
-    invertebrate = Invertebrates.objects.get(id=id)
-    invertebrates = Invertebrates.objects.all()
-    return render(request, 'invertebrate_detail_view.html', {'invertebrate': invertebrate, 'invertebrates': invertebrates})
+def updateInvertebrate(request, invertebrate_id):
+    invertebrate_id = int(invertebrate_id)
+    try:
+        invertebrate = Invertebrates.objects.get(id=invertebrate_id)
+    except Invertebrates.DoesNotExist:
+        return redirect('invertebrateIndex')
+    invertebrateForm = InvertebratesForm(request.POST or None, instance = invertebrate)
+    if invertebrateForm.is_valid():
+        invertebrateForm.save()
+        return redirect ('invertebrateIndex')
+    return render(request, 'invertebrate_update_view.html', {'invertebrateForm': invertebrateForm})
 
+def deleteInvertebrate(request, invertebrate_id):
+    invertebrate_id = int(invertebrate_id)
+    try:
+        invertebrate = Invertebrates.objects.get(id=invertebrate_id)
+    except Invertebrates.DoesNotExist:
+        return redirect('invertebrateIndex')
+    invertebrate.delete()
+    return redirect('invertebrateIndex')
