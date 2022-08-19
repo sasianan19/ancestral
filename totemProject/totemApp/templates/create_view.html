@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Create</title>
+		<title>Create Entry</title>
 	</head>
 	<body>
         <div class="container">
@@ -26,7 +26,7 @@
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </fieldset>
             </form> -->
-
+            <h1>Create Entry</h1>
             
             <form method="POST">
                 <fieldset>
@@ -36,6 +36,9 @@
                   <!-- Calling the form -->
                   {{ addCountry.as_p }}
                   <button type="submit" class="btn btn-primary">ADD</button>
+                  <br>
+                  <br>
+                  <button type="button"><a href="countries">Country Index</a></button>
                 </fieldset>
             </form>
 
@@ -48,6 +51,9 @@
                 {% csrf_token %}
                 {{ addKeyword.as_p }}
                 <button type="submit" class="btn btn-primary">ADD</button>
+                <br>
+                <br>
+                <button type="button"><a href="keywords">Keyword Index</a></button>
               </fieldset>
           </form>
 
@@ -60,6 +66,9 @@
                   {% csrf_token %}
                   {{ addVertebrate.as_p }}
                   <button type="submit" class="btn btn-primary">ADD</button>
+                  <br>
+                  <br>
+                  <button type="button"><a href="vertebrates">Vertebrate Index</a></button>
                 </fieldset>
             </form>
 
@@ -72,6 +81,9 @@
                   {% csrf_token %}
                   {{ addInvertebrate.as_p }}
                   <button type="submit" class="btn btn-primary">ADD</button>
+                  <br>
+                  <br>
+                  <button type="button"><a href="invertebrates">Invertebrate Index</a></button>
                 </fieldset>
             </form>
         </div>
