@@ -12,11 +12,14 @@
  
             {% for country in countries %}
          
-            {{ country }}
+            {{ country }} | {{ country.continent }}
+            <br>
+            <button type="button"><a href="countryUpdate/{{country.id}}">Edit</a></button>
+            <button type="button"><a href="deleteCountry/{{country.id}}">Delete</a></button>
             <hr/>
          
             {% endfor %}
-         
+
         </div>
     </body>
 </html>

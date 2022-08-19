@@ -13,6 +13,9 @@
             {% for invertebrate in invertebrates %}
          
             {{ invertebrate }}
+            <br>
+            <button type="button"><a href="updateInvertebrate/{{invertebrate.id}}">Edit</a></button>
+            <button type="button"><a href="deleteInvertebrate/{{invertebrate.id}}">Delete</a></button>
             <hr/>
          
             {% endfor %}
