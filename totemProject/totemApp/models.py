@@ -41,13 +41,14 @@ class Vertebrates(models.Model):
     country = models.ForeignKey(Countries, on_delete = models.CASCADE)
     meaning = models.TextField(max_length = 5000)
     keywords = models.ManyToManyField(Keywords) 
+    sources = models.CharField(max_length = 4000, unique = True)
 
     def __str__(self):
         # Converting the keywords queryset to a string before inserting into f-string will return proper string. "{self.keywords.all()}" returns
         # "<QuerySet [<Keywords: Power>, <Keywords: Fertility>]>". 
         # Credit to Alasdair on Stack Overflow @ https://stackoverflow.com/questions/39729238/manytomany-relationships-returning-fields-in-def-str-method
         keywords = ", ".join(str(keyword) for keyword in self.keywords.all())
-        return f'{self.classification} , {self.animal} , {self.country} - {self.country.continent} , {self.meaning} || {keywords}'
+        return f'{self.classification} , {self.animal} , {self.country} - {self.country.continent} , {self.meaning} || {keywords} || {self.sources}'
 
 class Invertebrates(models.Model):
     classification = models.ForeignKey(AnimalClass, on_delete = models.CASCADE)
@@ -55,7 +56,9 @@ class Invertebrates(models.Model):
     country = models.ForeignKey(Countries, on_delete = models.CASCADE)
     meaning = models.TextField(max_length = 5000) 
     keywords = models.ManyToManyField(Keywords)
+    sources = models.CharField(max_length = 4000, unique = True)
+
 
     def __str__(self):
         keywords = ", ".join(str(keyword) for keyword in self.keywords.all())
-        return f'{self.classification} , {self.animal} , {self.country} - {self.country.continent}, {self.meaning} || {keywords}'
+        return f'{self.classification} , {self.animal} , {self.country} - {self.country.continent}, {self.meaning} || {keywords} || {self.sources}'
