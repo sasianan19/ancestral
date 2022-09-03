@@ -14,32 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from totemApp.views import *  
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # The following two paths, 'create' & 'update/delete', are for dev use only (for now)- site/app users should not be creating,
-    # updating, or deleting anything in/from database tables 
-    path('create', createEntry),
-
-    path('countries', countryIndex, name='countryIndex'),
-    path('updateCountry/<country_id>', updateCountry),
-    path('deleteCountry/<country_id>', deleteCountry),
-
-    path('keywords', keywordIndex, name='keywordIndex'),
-    path('updateKeyword/<keyword_id>', updateKeyword),
-    path('deleteKeyword/<keyword_id>', deleteKeyword),
-
-    path('vertebrates', vertebrateIndex, name='vertebrateIndex'),
-    path('updateVertebrate/<vertebrate_id>', updateVertebrate),
-    path('deleteVertebrate/<vertebrate_id>', deleteVertebrate),
-
-    path('invertebrates', invertebrateIndex, name='invertebrateIndex'),
-    path('updateInvertebrate/<invertebrate_id>', updateInvertebrate),
-    path('deleteInvertebrate/<invertebrate_id>', deleteInvertebrate),
-
+    path('totem/', include('totemApp.urls')),
     
-
 ]
