@@ -2,6 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from totemApp.models import *
 from totemApp.forms import * 
+from django.views.generic.base import TemplateView
+ 
+class LandingPage(TemplateView):
+    template_name = 'landing_page.html'
+
+
 
 # Create your views here.
 # To be optimized later:
