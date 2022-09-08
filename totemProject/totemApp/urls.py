@@ -19,4 +19,7 @@ urlpatterns = [
     path('invertebrates', invertebrateIndex, name='invertebrateIndex'),
     path('updateInvertebrate/<invertebrate_id>', updateInvertebrate),
     path('deleteInvertebrate/<invertebrate_id>', deleteInvertebrate),
+
+    #------- user URLs -------#
+    path('totem/', LandingPage.as_view(), name='landingPage'),
 ]
