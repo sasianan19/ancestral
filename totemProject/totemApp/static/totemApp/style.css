@@ -1,0 +1,16 @@
+/* LANDING PAGE */
+#landingPageBody {
+    background-image: url("images/Basalt\ Rock\ Wall_Jejudo_By\ Daesun\ Kim_Unsplash.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#landingPageHeader {
+    text-align: center;
+}
+#exploreBtnDiv {
+    text-align: center;
+}
+#exploreBtnLink {
+    text-decoration: none;
+}
