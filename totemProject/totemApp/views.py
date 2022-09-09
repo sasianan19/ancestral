@@ -2,12 +2,18 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from totemApp.models import *
 from totemApp.forms import * 
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, ListView
  
+# LANDING PAGE
 class LandingPage(TemplateView):
     template_name = 'landing_page.html'
 
+# HOME PAGE
+class HomePage(TemplateView):
+    template_name='home_page.html'
 
+# class SearchResultsPages(ListView):
+    
 
 # Create your views here.
 # To be optimized later:
