@@ -22,4 +22,5 @@ urlpatterns = [
 
     #------- user URLs -------#
     path('totem/', LandingPage.as_view(), name='landingPage'),
+    path('home/', HomePage.as_view(), name='homePage'),
 ]
