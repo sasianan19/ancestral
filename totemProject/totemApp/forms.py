@@ -45,8 +45,8 @@ class VertebratesForm(forms.ModelForm):
 
     class Meta:
         model = Vertebrates
-        fields = ['classification', 'animal', 'country', 'meaning', 'keywords']
-        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords"}
+        fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'sources']
+        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords", 'sources': "Sources"}
 
 class InvertebratesForm(forms.ModelForm):
     c_r_u_dInvertebrates = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -58,5 +58,5 @@ class InvertebratesForm(forms.ModelForm):
     
     class Meta:
         model = Invertebrates
-        fields = ['classification', 'animal', 'country', 'meaning', 'keywords']
-        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords"}
+        fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'sources']
+        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords", 'sources': "Sources"}
