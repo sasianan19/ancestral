@@ -21,6 +21,7 @@ urlpatterns = [
     path('deleteInvertebrate/<invertebrate_id>', deleteInvertebrate),
 
     #------- user URLs -------#
-    path('totem/', LandingPage.as_view(), name='landingPage'),
+    path('ancestral/', LandingPage.as_view(), name='landingPage'),
     path('home/', HomePage.as_view(), name='homePage'),
+    path('search results/', SearchResultsPage.as_view()),
 ]
