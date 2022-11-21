@@ -1,0 +1,38 @@
+/* FOR TABLETS AND SMALLER */
+@media (max-width: 991.99px) {
+    /* LANDING PAGE */
+    #landingBackground {
+        background-image: url('images/Blue\ Sea\ Under\ Blue\ Sky\ By_Dave_Unsplash.jpg');
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #3a89c9;
+        
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #landingPageHeader {
+        font-family: Garamond;
+        font-size: 55px;
+        margin-top: 90%;
+    }
+    #exploreBtnDiv {
+        margin-top: 20%;
+    }
+    .btnLink {
+        text-decoration: none;
+        color: rgb(44, 44, 44);
+        font-size: 25px;
+        font-family: Monospace;
+    }
+    .btnLink:hover {
+        color: rgb(248, 248, 248);
+        cursor: grabbing;
+        text-decoration: underline;
+    }
+}

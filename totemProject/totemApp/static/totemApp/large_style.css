@@ -1,0 +1,50 @@
+/* FOR DESKTOPS AND LARGER */
+@media (min-width: 992px) {
+    /* LANDING PAGE */
+    #landingBackground {
+        background-image: url('images/Basalt\ Rock\ Wall_Jejudo_By\ Daesun\ Kim_Unsplash.jpg');
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #3a89c9;
+        
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #landingPageHeader {
+        font-family: Garamond;
+        font-size: 80px;
+    }
+    #exploreBtnDiv {
+        margin-top: 20%;
+    }
+    .btnLink {
+        text-decoration: none;
+        color: rgb(44, 44, 44);
+        font-size: 30px;
+        font-family: Monospace;
+    }
+    .btnLink:hover {
+        color: rgb(248, 248, 248);
+        cursor: grabbing;
+        text-decoration: underline;
+    }
+
+    /* HOME PAGE */
+    #homePageBody {
+        background-image: url('images/Poppit\ Sands\ Beach_By\ Daryan\ Shamkhali_Unsplash.jpg');
+        background-color: black;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    #searchDiv { 
+        display: flex;
+        justify-content: center;
+        margin-top: 25%;
+    } 
+}
