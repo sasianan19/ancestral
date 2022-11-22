@@ -1,14 +1,18 @@
 /* FOR TABLETS AND SMALLER */
 @media (max-width: 991.99px) {
-    /* LANDING PAGE */
-    #landingBackground {
-        background-image: url('images/Blue\ Sea\ Under\ Blue\ Sky\ By_Dave_Unsplash.jpg');
+    /* CONSTANT ACROSS PAGES */
+    .background {
         background-position: center center;
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+
+    /* LANDING PAGE */
+    #landingBackground {
+        background-image: url('images/Blue\ Sea\ Under\ Blue\ Sky\ By_Dave_Unsplash.jpg');
         background-color: #3a89c9;
-        
     }
     .container {
         display: flex;
@@ -31,8 +35,92 @@
         font-family: Monospace;
     }
     .btnLink:hover {
-        color: rgb(248, 248, 248);
+        color: silver;
         cursor: grabbing;
         text-decoration: underline;
+    }
+
+     /* HOME PAGE */
+     #homeBackground {
+        background-image: url('images/Poppit\ Sands\ Beach_By\ Daryan\ Shamkhali_Unsplash.jpg');
+        background-color: tan;
+    }
+    #searchDiv { 
+        display: flex;
+        justify-content: center;
+        margin-top: 25%;
+    } 
+    #jejuLink {
+        display: none;
+    }
+    /* MODAL */
+    .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    }
+    .modal.open {
+    display: flex;
+    }
+    .modal-container {
+    background-color: #fff;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    }
+    .modal.open .modal-container {
+    animation: move 0.6s ease-out;
+    }
+    @keyframes move {
+    from {
+        transform: translateY(-50px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+    }
+    .modal-content {
+    }
+    .modal-content > *:not(img) {
+    padding: 0 1rem;
+    }
+    .modal-content h2 {
+    margin: 1.5rem 0 0.6rem 0;
+    }
+    .modal-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    }
+    .modal-content a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    padding-bottom: 1rem;
+    display: inline-block;
+    }
+    .modal-content a:hover {
+    color: salmon;
+    }
+    
+    .close-modal {
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: color 0.15s linear;
+    }
+    .close-modal:hover {
+    color: #f00;
     }
 }
