@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'totemApp/large_style.css' %}">
+    <link rel="stylesheet" href="{% static 'totemApp/small_style.css' %}">
+    <!-- CSS (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body id="homeBackground" class="background">
+    <!-- ADD MODAL -->
+    <div id="modal" class="modal open">
+        <div class="modal-container">
+            <div class="modal-content">
+                <img src="{% static 'totemApp/images/Monkey Uganda By_Francesco Ungaro_Unsplash.jpg' %}" 
+                alt="A monkey with brown eyes looking down into the camera with green flora in the background.">
+                <h4>Foundational Human Belief System</h4>
+                <p>
+                Animism is the attribution of a soul to both animate beings and inanimate things. For ages, 
+                indigenous communities around the world have coexisted with their natural environments through 
+                the honoring of spirits. Please take a look around and keep an open mind to ancestral wisdom.
+                Happy searching!
+                </p>
+                <a href="https://www.encyclopedia.com/philosophy-and-religion/other-religious-beliefs-and-general-terms/religion-general/animism" target="blank">
+                    learn more
+                </a>
+            </div>
+          <span id="close-modal" class="close-modal">&times;</span>
+        </div>
+    </div>
+    
+
+    <!-- ADD COLLAPSABLE NAVBAR -->
+
+    <div id="searchDiv">
+        <h1 id="searchBarTitle">Search:</h1>
+        <input type="text" name="search">
+        <button type="submit">scour</button>
+    </div>
+
+<!-- SCRIPT/S -->
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<!-- Javascript for modal -->
+<script>
+    const btnCloseModal = document.getElementById("close-modal");
+    const modalElm = document.getElementById("modal");
+
+    btnCloseModal.addEventListener("click", function () {
+    modalElm.classList.remove("open");
+    });
+</script>
+</body>
+</html>
