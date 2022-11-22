@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from totemApp.models import *
 from totemApp.forms import * 
-from django.views.generic.base import TemplateView, ListView
+from django.views.generic.base import TemplateView
  
 # LANDING PAGE
 class LandingPage(TemplateView):
@@ -12,37 +12,13 @@ class LandingPage(TemplateView):
 class HomePage(TemplateView):
     template_name='home_page.html'
 
-# class SearchResultsPages(ListView):
-    
+class SearchResultsPage(TemplateView):
+    template_name='search_results.html'
 
-# Create your views here.
-# To be optimized later:
-# def createView(request):
-#     addCountry = CountriesForm()
-#     addKeyword = KeywordsForm()
-#     addVertebrate = VertebratesForm()
-#     addInvertebrate = InvertebratesForm()
-#     forms = [addCountry, addKeyword, addVertebrate, addInvertebrate]
-#     crud_widgets = ['c_r_u_dCountries', 'c_r_u_dKeywords', 'c_r_u_dVertebrates', 'c_r_u_dInvertebrates']
-#     if request.method == 'POST':
-#         for i in range(len(crud_widgets)):
-#             if crud_widgets[i] in request.POST:
-#                 for j in range(len(forms)):
-#                     form = forms[j](request.POST)
-#                     if form.is_valid():
-#                         form.save()
-#                         return redirect('createForms')
-#     context = {
-#         "addCountry": addCountry,
-#         "addKeyword": addKeyword,
-#         "addVertebrate": addVertebrate,
-#         "addInvertebrate": addInvertebrate,
-#     }
-#     return render(request, 'create_view.html', context=context)
 
 
 # "createEntry" is for adding to database tables
-# Credit to Rafiq Hilali for this code @ https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page
+# Credit to Rafiq Hilali @ https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page
 def createEntry(request):
     addCountry = CountriesForm()
     addKeyword = KeywordsForm()
