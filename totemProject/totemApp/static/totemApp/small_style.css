@@ -7,6 +7,13 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    #homeBackground, #resultsBackground {
+        background-image: url('images/Poppit\ Sands\ Beach_By\ Daryan\ Shamkhali_Unsplash.jpg');
+        background-color: tan;
+    }
+    .deleteButton {
+        background-color: red;
+    }
 
 
     /* LANDING PAGE */
@@ -45,10 +52,6 @@
 
 
     /* HOME PAGE */
-    #homeBackground {
-        background-image: url('images/Poppit\ Sands\ Beach_By\ Daryan\ Shamkhali_Unsplash.jpg');
-        background-color: tan;
-    }
     #searchDiv { 
         display: flex;
         justify-content: center;
