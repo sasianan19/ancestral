@@ -1,91 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Create Entry</title>
-	</head>
-	<body>
-        <div class="container">
-            <!-- The following two forms are commented out because they were only used to add a SET number of continents
-                and animal classes; 7 continents and 11 classifications. -->
-            <!-- <form method="POST">
-              <fieldset>
-                <legend>Add Continent</legend>
-                {% csrf_token %}
-                {{ ContinentsForm.as_p }}
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </fieldset>
-            </form> -->
-                 <!-- <form method="POST">
-                <fieldset>
-                  <legend>Add Animal Class</legend>
-                  {% csrf_token %}
-                  {{ AnimalClassForm.as_p }}
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </fieldset>
-            </form> -->
-            <h1>Create Entry</h1>
-            
-            <form method="POST">
-                <fieldset>
-                  <legend>Add Country</legend>
-                  <!-- Django security token (required) -->
-                  {% csrf_token %}
-                  <!-- Calling the form -->
-                  {{ addCountry.as_p }}
-                  <button type="submit" class="btn btn-primary">ADD</button>
-                  <br>
-                  <br>
-                  <button type="button"><a href="countries">Country Index</a></button>
-                </fieldset>
-            </form>
+<head>
+<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'totemApp/images/favicon.ico' %}"/>
+    <title>ancestral | Create Entry</title>
+</head>
+<body>
+    <div class="container">
+        <!-- The following two forms are commented out because they were only used to add a SET number of continents
+            and animal classes; 7 continents and 11 classifications. -->
+        <!-- <form method="POST">
+          <fieldset>
+            <legend>Add Continent</legend>
+            {% csrf_token %}
+            {{ ContinentsForm.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </fieldset>
+        </form> -->
+              <!-- <form method="POST">
+            <fieldset>
+              <legend>Add Animal Class</legend>
+              {% csrf_token %}
+              {{ AnimalClassForm.as_p }}
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form> -->
+        <h1>Create Entry</h1>
+        
+        <form method="POST">
+            <fieldset>
+              <legend>Add Country</legend>
+              <!-- Django security token (required) -->
+              {% csrf_token %}
+              <!-- Calling the form -->
+              {{ addCountry.as_p }}
+              <button type="submit" class="btn btn-primary">ADD</button>
+              <br>
+              <br>
+              <button type="button"><a href="countries">Country Index</a></button>
+            </fieldset>
+        </form>
 
+        <br>
+        <br>
+
+        <form method="POST">
+          <fieldset>
+            <legend>Add Keyword</legend>
+            {% csrf_token %}
+            {{ addKeyword.as_p }}
+            <button type="submit" class="btn btn-primary">ADD</button>
             <br>
             <br>
+            <button type="button"><a href="keywords">Keyword Index</a></button>
+          </fieldset>
+      </form>
 
-            <form method="POST">
-              <fieldset>
-                <legend>Add Keyword</legend>
-                {% csrf_token %}
-                {{ addKeyword.as_p }}
-                <button type="submit" class="btn btn-primary">ADD</button>
-                <br>
-                <br>
-                <button type="button"><a href="keywords">Keyword Index</a></button>
-              </fieldset>
-          </form>
+      <br>
+      <br>
 
-          <br>
-          <br>
+        <form method="POST">
+            <fieldset>
+              <legend>Add Vertebrate</legend>
+              {% csrf_token %}
+              {{ addVertebrate.as_p }}
+              <button type="submit" class="btn btn-primary">ADD</button>
+              <br>
+              <br>
+              <button type="button"><a href="vertebrates">Vertebrate Index</a></button>
+            </fieldset>
+        </form>
 
-            <form method="POST">
-                <fieldset>
-                  <legend>Add Vertebrate</legend>
-                  {% csrf_token %}
-                  {{ addVertebrate.as_p }}
-                  <button type="submit" class="btn btn-primary">ADD</button>
-                  <br>
-                  <br>
-                  <button type="button"><a href="vertebrates">Vertebrate Index</a></button>
-                </fieldset>
-            </form>
+        <br>
+        <br>
 
-            <br>
-            <br>
-
-            <form method="POST">
-                <fieldset>
-                  <legend>Add Invertebrate</legend>
-                  {% csrf_token %}
-                  {{ addInvertebrate.as_p }}
-                  <button type="submit" class="btn btn-primary">ADD</button>
-                  <br>
-                  <br>
-                  <button type="button"><a href="invertebrates">Invertebrate Index</a></button>
-                </fieldset>
-            </form>
-        </div>
-    </body>
+        <form method="POST">
+            <fieldset>
+              <legend>Add Invertebrate</legend>
+              {% csrf_token %}
+              {{ addInvertebrate.as_p }}
+              <button type="submit" class="btn btn-primary">ADD</button>
+              <br>
+              <br>
+              <button type="button"><a href="invertebrates">Invertebrate Index</a></button>
+            </fieldset>
+        </form>
+    </div>
+</body>
 </html>

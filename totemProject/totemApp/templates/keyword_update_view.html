@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Update Keyword</title>
-	</head>
-	<body>
-        <div class="main">
-            <h3><u>Update Keyword</u></h3>
-            
-            <form method="POST">
-                <!-- Security token by Django -->
-                {% csrf_token %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'totemApp/images/favicon.ico' %}"/>
+    <title>ancestral | Update Keyword</title>
+</head>
+<body>
+    <div class="main">
+        <h3><u>Update Keyword</u></h3>
         
-                <!-- form as paragraph -->
-                {{ keywordForm.as_p }}
-        
-                <input type="submit" value="Update">
-            </form>
-        </div>
-    </body>
+        <form method="POST">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+    
+            <!-- form as paragraph -->
+            {{ keywordForm.as_p }}
+    
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</body>
 </html>

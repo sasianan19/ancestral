@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Keyword List</title>
-	</head>
-	<body>
-        <div class="main">
-            <h3><u>Keywords</u></h3>
- 
-            {% for keyword in keywords %}
-         
-            {{ keyword }}
-            <br>
-            <button type="button"><a href="updateKeyword/{{keyword.id}}">Edit</a></button>
-            <button type="button"><a href="deleteKeyword/{{keyword.id}}">Delete</a></button>
-            <hr/>
-         
-            {% endfor %}
-         
-            <button type="button"><a href="create">Back to Create Entry</a></button>
-        </div>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'totemApp/images/favicon.ico' %}"/>
+    <title>ancestral | Keyword List</title>
+</head>
+<body>
+    <div class="main">
+        <h3><u>Keywords</u></h3>
+
+        {% for keyword in keywords %}
+        
+        {{ keyword }}
+        <br>
+        <button type="button"><a href="updateKeyword/{{keyword.id}}">Edit</a></button>
+        <button type="button"><a href="deleteKeyword/{{keyword.id}}">Delete</a></button>
+        <hr/>
+        
+        {% endfor %}
+        
+        <button type="button"><a href="create">Back to Create Entry</a></button>
+    </div>
+</body>
 </html>

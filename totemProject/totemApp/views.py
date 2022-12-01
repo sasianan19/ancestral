@@ -1,9 +1,10 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from totemApp.models import *
 from totemApp.forms import * 
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q
  
+
 # LANDING PAGE
 class LandingPage(TemplateView):
     template_name = 'landing_page.html'
@@ -12,8 +13,17 @@ class LandingPage(TemplateView):
 class HomePage(TemplateView):
     template_name='home_page.html'
 
-class SearchResultsPage(TemplateView):
-    template_name='search_results.html'
+# SEARCH RESULTS PAGE
+class SearchResultsPage(ListView):
+    model = Countries
+    template_name='search_results_page.html'
+
+    def get_queryset(self):  
+        query = self.request.GET.get("q")
+        object_list = Countries.objects.filter(
+            Q(country__icontains=query) 
+        )
+        return object_list
 
 
 
@@ -72,15 +82,14 @@ def updateCountry(request, country_id):
         return redirect ('countryIndex')
     return render(request, 'country_update_view.html', {'countryForm': countryForm})
 
-def deleteCountry(request, country_id):
+def deleteCountry(country_id):
     country_id = int(country_id)
     try:
-        country = Countries.objects.get(id=country_id)
+        country = Countries.objects.get(id=country)
     except Countries.DoesNotExist:
         return redirect('countryIndex')
     country.delete()
     return redirect('countryIndex')
-
 
 
 # Keywords index, update, & delete views

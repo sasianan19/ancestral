@@ -1,12 +1,12 @@
 from django.urls import path
 from totemApp.views import *
 
+
 urlpatterns = [
     path('create', createEntry),
 
     path('countries', countryIndex, name='countryIndex'),
     path('updateCountry/<country_id>', updateCountry),
-    path('deleteCountry/<country_id>', deleteCountry),
 
     path('keywords', keywordIndex, name='keywordIndex'),
     path('updateKeyword/<keyword_id>', updateKeyword),
@@ -23,5 +23,5 @@ urlpatterns = [
     #------- user URLs -------#
     path('ancestral/', LandingPage.as_view(), name='landingPage'),
     path('home/', HomePage.as_view(), name='homePage'),
-    path('search results/', SearchResultsPage.as_view()),
+    path('results/', SearchResultsPage.as_view(), name='results'),
 ]

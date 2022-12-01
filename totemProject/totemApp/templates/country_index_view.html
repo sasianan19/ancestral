@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Country List</title>
-	</head>
-	<body>
-        <div class="main">
-            <h3><u>Countries</u></h3>
- 
-            {% for country in countries %}
-         
-            {{ country }} | {{ country.continent }}
-            <br>
-            <button type="button"><a href="countryUpdate/{{country.id}}">Edit</a></button>
-            <button type="button"><a href="deleteCountry/{{country.id}}">Delete</a></button>
-            <hr/>
-         
-            {% endfor %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'totemApp/images/favicon.ico' %}"/>
+    <title>ancestral | Country List</title>
+</head>
+<body>
+    <div class="main">
+        <h3><u>Countries</u></h3>
 
-            <button type="button"><a href="create">Back to Create Entry</a></button>
-        </div>
-    </body>
+        {% for country in countries %}
+        
+        {{ country }} | {{ country.continent }}
+
+        <br>
+        <button type="button"><a href="updateCountry/{{country.id}}">Edit</a></button>
+        <hr/>
+        
+        {% endfor %}
+
+        <button type="button"><a href="create">Back to Create Entry</a></button>
+    </div>
+</body>
 </html>
