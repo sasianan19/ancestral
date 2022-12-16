@@ -3,10 +3,13 @@ from totemApp.views import *
 
 
 urlpatterns = [
+    #------- dev URLs -------#
     path('create', createEntry),
 
     path('countries', countryIndex, name='countryIndex'),
     path('updateCountry/<country_id>', updateCountry),
+    path('deleteCountry', deleteCountry),
+
 
     path('keywords', keywordIndex, name='keywordIndex'),
     path('updateKeyword/<keyword_id>', updateKeyword),

@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import (render, 
+                              redirect,
+                              get_object_or_404,
+                              HttpResponseRedirect)
 from totemApp.models import *
 from totemApp.forms import * 
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q
+from itertools import chain
  
 
 # LANDING PAGE
@@ -15,16 +19,19 @@ class HomePage(TemplateView):
 
 # SEARCH RESULTS PAGE
 class SearchResultsPage(ListView):
-    model = Countries
     template_name='search_results_page.html'
 
     def get_queryset(self):  
         query = self.request.GET.get("q")
-        object_list = Countries.objects.filter(
-            Q(country__icontains=query) 
-        )
+        object_list = list(chain(
+            Vertebrates.objects.filter(
+                Q(animal__icontains=query)),
+            Invertebrates.objects.filter(
+                Q(animal__icontains=query)
+            )
+        ))
         return object_list
-
+    
 
 
 # "createEntry" is for adding to database tables
@@ -71,7 +78,7 @@ def countryIndex(request):
     return render(request, 'country_index_view.html', {'countries': countries})
 
 def updateCountry(request, country_id):
-    country_id = int(country_id)
+    # country_id = int(country_id)
     try:
         country = Countries.objects.get(id=country_id)
     except Countries.DoesNotExist:
@@ -82,14 +89,19 @@ def updateCountry(request, country_id):
         return redirect ('countryIndex')
     return render(request, 'country_update_view.html', {'countryForm': countryForm})
 
-def deleteCountry(country_id):
-    country_id = int(country_id)
+# COME BACK TO FIX LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+def deleteCountry(request, country_id):
+    context = {}
+    
+    # country_id = int(country_id)
     try:
-        country = Countries.objects.get(id=country)
+        country = Countries.objects.get(id=country_id)
     except Countries.DoesNotExist:
         return redirect('countryIndex')
-    country.delete()
-    return redirect('countryIndex')
+    if request.method == 'POST':
+        country.delete()
+        return redirect('countryIndex')
+    return render(request, 'country_delete_view.html', context)
 
 
 # Keywords index, update, & delete views
