@@ -46,12 +46,16 @@
             </ul>
         </div>
 
-        {% for country in object_list %}
+        {% for animal in object_list %}
         <div id="resultsDiv">
-            <p>{{ country.country }} | {{ country.continent }}</p>
+            <h3>{{ animal.animal }} | {{ animal.classification }}</h3>
+            <p>{{ animal.meaning }}</p>
+            <br>
+            {% for keyword in animal.keywords.all %}
+                <p style="display:inline">{{ keyword.keyword }}</p>
+            {% endfor %}        
         </div>
-        {% endfor %}
-           
+        {% endfor %}   
     </div>
 
 
