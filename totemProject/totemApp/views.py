@@ -11,7 +11,7 @@ from itertools import chain
 
 # LANDING PAGE
 class LandingPage(TemplateView):
-    template_name = 'landing_page.html'
+    template_name = 'index.html'
 
 # HOME PAGE
 class HomePage(TemplateView):
@@ -27,10 +27,13 @@ class SearchResultsPage(ListView):
             Vertebrates.objects.filter(
                 Q(animal__icontains=query)),
             Invertebrates.objects.filter(
-                Q(animal__icontains=query)
+                Q(animal__icontains=query))
             )
-        ))
+        )
+           
         return object_list
+    
+
     
 
 
