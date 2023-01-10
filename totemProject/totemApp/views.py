@@ -80,30 +80,34 @@ def countryIndex(request):
     countries = Countries.objects.all()
     return render(request, 'country_index_view.html', {'countries': countries})
 
-def updateCountry(request, country_id):
-    # country_id = int(country_id)
-    try:
-        country = Countries.objects.get(id=country_id)
-    except Countries.DoesNotExist:
-        return redirect('countryIndex')
-    countryForm = CountriesForm(request.POST or None, instance = country)
-    if countryForm.is_valid():
-        countryForm.save()
-        return redirect ('countryIndex')
-    return render(request, 'country_update_view.html', {'countryForm': countryForm})
+def updateCountry(request, pk):
+    country = Countries.objects.get(id=pk)
+    form = CountriesForm(instance=country)
+
+    if request.method == 'POST':
+        form = CountriesForm(request.POST, instance = country)
+        if form.is_valid():
+            form.save()
+            return redirect('countryIndex')
+
+    context = {
+        'country': country, 
+        'form': form
+    }
+    return render(request, 'country_update_view.html', context)
 
 # COME BACK TO FIX LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-def deleteCountry(request, country_id):
-    context = {}
-    
-    # country_id = int(country_id)
-    try:
-        country = Countries.objects.get(id=country_id)
-    except Countries.DoesNotExist:
-        return redirect('countryIndex')
+def deleteCountry(request, pk):
+    country = Countries.objects.get(id=pk)
+
     if request.method == 'POST':
         country.delete()
         return redirect('countryIndex')
+
+    context = {
+        'country': country
+    }
+
     return render(request, 'country_delete_view.html', context)
 
 

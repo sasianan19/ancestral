@@ -18,7 +18,8 @@
         {{ country }} | {{ country.continent }}
 
         <br>
-        <button type="button"><a href="updateCountry/{{country.id}}">Edit</a></button>
+        <button type="button"><a href="updateCountry/{{ country.pk }}">Edit</a></button>
+        <button type="button"><a href="deleteCountry/{{ country.pk }}">Delete</a></button>
         <hr/>
         
         {% endfor %}

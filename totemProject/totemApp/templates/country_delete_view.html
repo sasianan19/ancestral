@@ -7,20 +7,23 @@
     {% load static %}
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/png" href="{% static 'totemApp/images/favicon.ico' %}"/>
-    <title>ancestral | Update Country</title>
+    <title>ancestral | Delete Country</title>
 </head>
 <body>
     <div class="main">
-        <h3><u>Update Country</u></h3>
+        <h3><u>Delete Country</u></h3>
         
         <form method="POST">
             <!-- Security token by Django -->
             {% csrf_token %}
     
-            <!-- form as paragraph -->
-            {{ form.as_p }}
-    
-            <input type="submit" value="Update">
+            <p>Are you sure you want to delete "{{ country }}"?</p>
+
+            <br>
+
+            <button><a href="{% url 'countryIndex' %}">No</a></button>
+            
+            <input type="submit" value="Yes">
         </form>
     </div>
 </body>

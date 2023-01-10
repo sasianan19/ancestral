@@ -7,9 +7,8 @@ urlpatterns = [
     path('create', createEntry),
 
     path('countries', countryIndex, name='countryIndex'),
-    path('updateCountry/<country_id>', updateCountry),
-    path('deleteCountry', deleteCountry),
-
+    path('updateCountry/<pk>', updateCountry),
+    path('deleteCountry/<pk>', deleteCountry),
 
     path('keywords', keywordIndex, name='keywordIndex'),
     path('updateKeyword/<keyword_id>', updateKeyword),
