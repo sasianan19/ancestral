@@ -16,9 +16,10 @@
         {% for keyword in keywords %}
         
         {{ keyword }}
+
         <br>
-        <button type="button"><a href="updateKeyword/{{keyword.id}}">Edit</a></button>
-        <button type="button"><a href="deleteKeyword/{{keyword.id}}">Delete</a></button>
+        <button type="button"><a href="updateKeyword/{{keyword.pk}}">Edit</a></button>
+        <button type="button"><a href="deleteKeyword/{{keyword.pk}}">Delete</a></button>
         <hr/>
         
         {% endfor %}

@@ -94,9 +94,9 @@ def updateCountry(request, pk):
         'country': country, 
         'form': form
     }
+
     return render(request, 'country_update_view.html', context)
 
-# COME BACK TO FIX LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 def deleteCountry(request, pk):
     country = Countries.objects.get(id=pk)
 
@@ -116,26 +116,35 @@ def keywordIndex(request):
     keywords = Keywords.objects.all()
     return render(request, 'keyword_index_view.html', {'keywords': keywords})
 
-def updateKeyword(request, keyword_id):
-    keyword_id = int(keyword_id)
-    try:
-        keyword = Keywords.objects.get(id=keyword_id)
-    except Keywords.DoesNotExist:
-        return redirect('keywordIndex')
-    keywordForm = KeywordsForm(request.POST or None, instance = keyword)
-    if keywordForm.is_valid():
-        keywordForm.save()
-        return redirect ('keywordIndex')
-    return render(request, 'keyword_update_view.html', {'keywordForm': keywordForm})
+def updateKeyword(request, pk):
+    keyword = Keywords.objects.get(id=pk)
+    form = KeywordsForm(instance=keyword)
 
-def deleteKeyword(request, keyword_id):
-    keyword_id = int(keyword_id)
-    try:
-        keyword = Keywords.objects.get(id=keyword_id)
-    except Keywords.DoesNotExist:
+    if request.method == 'POST':
+        form = KeywordsForm(request.POST, instance = keyword)
+        if form.is_valid():
+            form.save()
+            return redirect('keywordIndex')
+
+    context = {
+        'keyword': keyword, 
+        'form': form
+    }
+    
+    return render(request, 'keyword_update_view.html', context)
+
+def deleteKeyword(request, pk):
+    keyword = Keywords.objects.get(id=pk)
+
+    if request.method == 'POST':
+        keyword.delete()
         return redirect('keywordIndex')
-    keyword.delete()
-    return redirect('keywordIndex')
+
+    context = {
+        'keyword': keyword
+    }
+
+    return render(request, 'keyword_delete_view.html', context)
 
 
 
