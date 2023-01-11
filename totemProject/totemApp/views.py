@@ -153,26 +153,35 @@ def vertebrateIndex(request):
     vertebrates = Vertebrates.objects.all()
     return render(request, 'vertebrate_index_view.html', {'vertebrates': vertebrates})
 
-def updateVertebrate(request, vertebrate_id):
-    vertebrate_id = int(vertebrate_id)
-    try:
-        vertebrate = Vertebrates.objects.get(id=vertebrate_id)
-    except Vertebrates.DoesNotExist:
-        return redirect('vertebrateIndex')
-    vertebrateForm = VertebratesForm(request.POST or None, instance = vertebrate)
-    if vertebrateForm.is_valid():
-        vertebrateForm.save()
-        return redirect ('vertebrateIndex')
-    return render(request, 'vertebrate_update_view.html', {'vertebrateForm': vertebrateForm})
+def updateVertebrate(request, pk):
+    vertebrate = Vertebrates.objects.get(id=pk)
+    form = VertebratesForm(instance=vertebrate)
 
-def deleteVertebrate(request, vertebrate_id):
-    vertebrate_id = int(vertebrate_id)
-    try:
-        vertebrate = Vertebrates.objects.get(id=vertebrate_id)
-    except Vertebrates.DoesNotExist:
+    if request.method == 'POST':
+        form = VertebratesForm(request.POST, instance = vertebrate)
+        if form.is_valid():
+            form.save()
+            return redirect('vertebrateIndex')
+
+    context = {
+        'vertebrate': vertebrate, 
+        'form': form
+    }
+    
+    return render(request, 'vertebrate_update_view.html', context)
+
+def deleteVertebrate(request, pk):
+    vertebrate = Vertebrates.objects.get(id=pk)
+
+    if request.method == 'POST':
+        vertebrate.delete()
         return redirect('vertebrateIndex')
-    vertebrate.delete()
-    return redirect('vertebrateIndex')
+
+    context = {
+        'vertebrate': vertebrate
+    }
+
+    return render(request, 'vertebrate_delete_view.html', context)
 
 
 

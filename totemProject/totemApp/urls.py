@@ -15,8 +15,8 @@ urlpatterns = [
     path('deleteKeyword/<pk>', deleteKeyword),
 
     path('vertebrates', vertebrateIndex, name='vertebrateIndex'),
-    path('updateVertebrate/<vertebrate_id>', updateVertebrate),
-    path('deleteVertebrate/<vertebrate_id>', deleteVertebrate),
+    path('updateVertebrate/<pk>', updateVertebrate),
+    path('deleteVertebrate/<pk>', deleteVertebrate),
 
     path('invertebrates', invertebrateIndex, name='invertebrateIndex'),
     path('updateInvertebrate/<invertebrate_id>', updateInvertebrate),
