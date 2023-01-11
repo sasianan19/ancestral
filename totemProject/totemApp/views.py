@@ -190,23 +190,32 @@ def invertebrateIndex(request):
     invertebrates = Invertebrates.objects.all()
     return render(request, 'invertebrate_index_view.html', {'invertebrates': invertebrates})
 
-def updateInvertebrate(request, invertebrate_id):
-    invertebrate_id = int(invertebrate_id)
-    try:
-        invertebrate = Invertebrates.objects.get(id=invertebrate_id)
-    except Invertebrates.DoesNotExist:
-        return redirect('invertebrateIndex')
-    invertebrateForm = InvertebratesForm(request.POST or None, instance = invertebrate)
-    if invertebrateForm.is_valid():
-        invertebrateForm.save()
-        return redirect ('invertebrateIndex')
-    return render(request, 'invertebrate_update_view.html', {'invertebrateForm': invertebrateForm})
+def updateInvertebrate(request, pk):
+    invertebrate = Invertebrates.objects.get(id=pk)
+    form = InvertebratesForm(instance=invertebrate)
 
-def deleteInvertebrate(request, invertebrate_id):
-    invertebrate_id = int(invertebrate_id)
-    try:
-        invertebrate = Invertebrates.objects.get(id=invertebrate_id)
-    except Invertebrates.DoesNotExist:
+    if request.method == 'POST':
+        form = InvertebratesForm(request.POST, instance = invertebrate)
+        if form.is_valid():
+            form.save()
+            return redirect('invertebrateIndex')
+
+    context = {
+        'invertebrate': invertebrate, 
+        'form': form
+    }
+    
+    return render(request, 'invertebrate_update_view.html', context)
+
+def deleteInvertebrate(request, pk):
+    invertebrate = Invertebrates.objects.get(id=pk)
+
+    if request.method == 'POST':
+        invertebrate.delete()
         return redirect('invertebrateIndex')
-    invertebrate.delete()
-    return redirect('invertebrateIndex')
+
+    context = {
+        'invertebrate': invertebrate
+    }
+
+    return render(request, 'invertebrate_delete_view.html', context)

@@ -7,20 +7,23 @@
     {% load static %}
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/png" href="{% static 'totemApp/images/favicon.ico' %}"/>
-    <title>ancestral | Update Invertebrate</title>
+    <title>ancestral | Delete Invertebrate</title>
 </head>
 <body>
     <div class="main">
-        <h3><u>Update Invertebrate</u></h3>
+        <h3><u>Delete Invertebrate</u></h3>
         
         <form method="POST">
             <!-- Security token by Django -->
             {% csrf_token %}
     
-            <!-- form as paragraph -->
-            {{ form.as_p }}
-    
-            <input type="submit" value="Update">
+            <p>Are you sure you want to delete "{{ invertebrate.animal }}"?</p>
+
+            <br>
+
+            <button><a href="{% url 'invertebrateIndex' %}">No</a></button>
+            
+            <input type="submit" value="Yes">
         </form>
     </div>
 </body>

@@ -19,8 +19,8 @@ urlpatterns = [
     path('deleteVertebrate/<pk>', deleteVertebrate),
 
     path('invertebrates', invertebrateIndex, name='invertebrateIndex'),
-    path('updateInvertebrate/<invertebrate_id>', updateInvertebrate),
-    path('deleteInvertebrate/<invertebrate_id>', deleteInvertebrate),
+    path('updateInvertebrate/<pk>', updateInvertebrate),
+    path('deleteInvertebrate/<pk>', deleteInvertebrate),
 
     #------- user URLs -------#
     path('ancestral/', LandingPage.as_view(), name='landingPage'),
