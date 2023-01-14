@@ -25,5 +25,6 @@ urlpatterns = [
     #------- user URLs -------#
     path('ancestral/', LandingPage.as_view(), name='landingPage'),
     path('home/', HomePage.as_view(), name='homePage'),
-    path('results/', SearchResultsPage.as_view(), name='results'),
+    path('search/', SearchResultsPage.as_view(), name='results'),
+    
 ]

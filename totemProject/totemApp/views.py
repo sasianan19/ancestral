@@ -1,7 +1,6 @@
 from django.shortcuts import (render, 
                               redirect,
-                              get_object_or_404,
-                              HttpResponseRedirect)
+                              HttpResponse)
 from totemApp.models import *
 from totemApp.forms import * 
 from django.views.generic import TemplateView, ListView
@@ -25,15 +24,15 @@ class SearchResultsPage(ListView):
         query = self.request.GET.get("q")
         object_list = list(chain(
             Vertebrates.objects.filter(
-                Q(animal__icontains=query)),
+                Q(animal__icontains=query) | Q(classification__classification__icontains=query) |
+                Q(country__country__icontains=query)),
             Invertebrates.objects.filter(
-                Q(animal__icontains=query))
+                Q(animal__icontains=query) | Q(classification__classification__icontains=query) |
+                Q(country__country__icontains=query))
             )
         )
-           
+        
         return object_list
-    
-
     
 
 
