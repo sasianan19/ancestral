@@ -46,18 +46,30 @@
             </ul>
         </div>
 
-        {% for animal in object_list %}
         <div id="resultsDiv">
-            <h3>{{ animal.animal }} | {{ animal.classification }}</h3>
-            <p>{{ animal.meaning }}</p>
-            <br>
-            {% for keyword in animal.keywords.all %}
-                <p style="display:inline">{{ keyword.keyword }}</p>
-            {% endfor %}        
-        </div>
-        {% endfor %}   
+            {%for animal in object_list %}
+                <h3>
+                    {{ animal.animal }} - {{ animal.classification }} 
+                    <br>
+                    {{ animal.country }} ({{ animal.country.continent }}):
+                </h3>
+                <p>{{ animal.meaning }}</p>
+                <br>
+                <h6>Keywords:</h6>
+                <ul>
+                {% for keyword in animal.keywords.all %}
+                    <li>{{ keyword.keyword }}</li>
+                {% endfor %}  
+                </ul>  
+            {% endfor %}   
+    
+            {% if not object_list %}
+                <p>Sorry, that hasn't been added yet!</p>
+            {% endif %}
+        </div> 
     </div>
-
+    
+        
 
 <!-- SCRIPT/S -->
 <!-- JavaScript Bundle with Popper -->
