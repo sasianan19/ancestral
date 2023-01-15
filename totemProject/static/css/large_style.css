@@ -1,0 +1,322 @@
+/* FOR DESKTOPS AND LARGER */
+@media (min-width: 992px) {
+    /* CONSTANT ACROSS PAGES */
+    .background {
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #homeBackground, #resultsBackground {
+        background-image: url('/static/images/Poppit-Sands-Beach-By-Daryan-Shamkhali-Unsplash.jpg');
+        background-color: tan;
+    }
+    .deleteButton {
+        background-color: red;
+    }
+    
+
+    /* LANDING PAGE */
+    #landingBackground {
+        background-image: url('/static/images/Basalt-Rock-Wall-Jejudo-By-Daesun-Kim-Unsplash.jpg');
+        background-color: #3a89c9;
+    }
+    #landingContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #landingPageHeader {
+        font-family: Garamond;
+        font-size: 80px;
+    }
+    #exploreBtnDiv {
+        margin-top: 20%;
+    }
+    .btnLink {
+        text-decoration: none;
+        color: rgb(44, 44, 44);
+        font-size: 30px;
+        font-family: Monospace;
+    }
+    .btnLink:hover {
+        color: silver;
+        cursor: grabbing;
+        text-decoration: underline;
+    }
+    #jejuLink {
+        font-size: 13px;
+        text-decoration: none;
+        color: rgb(25, 44, 122);
+    }
+    #jejuLink:hover {
+        color: rgb(44, 44, 44);
+    }
+
+
+    /* HOME PAGE */
+    #homeContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    #searchDiv { 
+        display: flex;
+        justify-content: center;
+        margin-top: 25%;
+    } 
+    /* MODAL */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal.open {
+        display: flex;
+    }
+    .modal-container {
+        background-color: #fff;
+        width: 90%;
+        max-width: 450px;
+        position: relative;
+    }
+    .modal.open .modal-container {
+        animation: move 0.6s ease-out;
+    }
+    @keyframes move {
+        from {
+          transform: translateY(-50px);
+        }
+        to {
+          transform: translateY(0px);
+        }
+    }
+    .modal-content {
+    }
+    .modal-content > *:not(img) {
+        padding: 0 1rem;
+    }
+    .modal-content h2 {
+        margin: 1.5rem 0 0.6rem 0;
+    }
+    .modal-content p {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+    .modal-content a {
+        font-size: 0.8rem;
+        text-decoration: none;
+        padding-bottom: 1rem;
+        display: inline-block;
+    }
+    .modal-content a:hover {
+        color: salmon;
+    }  
+    .close-modal {
+        font-size: 3rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #fff;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: color 0.15s linear;
+    }
+    .close-modal:hover {
+        color: #f00;
+    }
+    /* NAV TABS */
+    .nav {
+        background-image: url('/static/images/Leaves-By-Mario-Parente-Unsplash.jpg');    
+    }  
+    .nav li.active a, .nav li a:hover, .nav li.active a:focus, .nav li.active a:hover {
+        background-image: url('/static/images/Cherry-Blossoms-By-Roman-Kraft-Unsplash.jpg');
+        color: rgb(59, 34, 31);
+    }
+    .nav-tabs > li > a {
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 18px;
+    }
+    /* SEARCH BAR */
+    * {
+        outline: none;
+    }
+    .table {
+        display: table;
+        width: 100%;
+    }
+    .tableData {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    input,
+    #submitButton {
+        color: white;
+        font-family: Nunito;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+    }
+    #searchBarDiv {
+        position: absolute;
+        top: 30%;
+        left: 0;
+        right: 0;
+        padding: 35px;
+        margin: -83px auto 0 auto;
+        background-color: rgb(224, 202, 169);
+        box-shadow: 0 10px 40px #71573d, 0 0 0 20px tan;
+        border-radius: 5px;
+        transform: scale(0.6);
+    }
+    form {
+        height: 70px;
+    } 
+    input[type="text"] {
+        width: 100%;
+        height: 60px;
+        font-size: 60px;
+        line-height: 1;
+    }
+    input[type="text"]::placeholder {
+        color: rgb(173, 136, 117);
+    } 
+    #submit-searchBarDiv {
+        width: 1px;
+        padding-left: 35px;
+    }
+    #submitButton {
+        position: relative;
+        display: block;
+        width: 84px;
+        height: 96px;
+        cursor: pointer;
+    } 
+    #submit-circle {
+        position: relative;
+        top: -8px;
+        left: 0;
+        width: 65px;
+        height: 65px;
+        margin-top: 0;
+        border-width: 15px;
+        border: 15px solid #fff;
+        background-color: transparent;
+        border-radius: 50%;
+        transition: 0.5s ease all;
+    } 
+    #submitButton span {
+        position: absolute;
+        top: 68px;
+        left: 43px;
+        display: block;
+        width: 45px;
+        height: 15px;
+        background-color: transparent;
+        border-radius: 10px;
+        transform: rotateZ(52deg);
+        transition: 0.5s ease all;
+    }
+    #submitButton span:before,
+    #submitButton span:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 45px;
+        height: 15px;
+        background-color: #fff;
+        border-radius: 10px;
+        transform: rotateZ(0);
+        transition: 0.5s ease all;
+    }
+    #submit-searchBarDiv:hover #submit-circle {
+        top: -1px;
+        width: 67px;
+        height: 15px;
+        border-width: 0;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+    #submit-searchBarDiv:hover span {
+        top: 50%;
+        left: 56px;
+        width: 25px;
+        margin-top: -9px;
+        transform: rotateZ(0);
+    }
+    #submit-searchBarDiv:hover #submitButton span:before {
+        bottom: 11px;
+        transform: rotateZ(52deg);
+    }
+    #submit-searchBarDiv:hover #submitButton span:after {
+        bottom: -11px;
+        transform: rotateZ(-52deg);
+    }
+    #submit-searchBarDiv:hover #submitButton span:before,
+    #submit-searchBarDiv:hover #submitButton span:after {
+        right: -6px;
+        width: 40px;
+        background-color: #fff;
+    }
+    /* -end of search bar styling- */
+    #searchCriteriaDiv {
+        margin-top: 50px;
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(96, 88, 74);
+        font-size: 30px;
+        border-top: solid tan;
+    }
+     #criteria {
+        list-style-type: square;
+     } 
+
+    /* CUSTOM ACCORDION - CONTINENTS PAGES */
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+      
+    .acc-active, .accordion:hover {
+        background-color: #ccc;
+    }
+      
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+      
+    .acc-active:after {
+        content: "\2212";
+    }
+      
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+}
