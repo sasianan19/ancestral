@@ -26,6 +26,15 @@ class CountriesForm(forms.ModelForm):
         fields = ['country', 'continent']
         labels = {'country': "Country", 'continent': "Continent"}
 
+# Validates form to make sure only letters and spaces are present in input string
+    def clean_country(self):
+        country = self.cleaned_data['country']
+
+        if all(char.isalpha() or char.isspace() for char in country) == False:
+            raise forms.ValidationError('Please enter letters only')
+        return country
+
+
 class KeywordsForm(forms.ModelForm):
     c_r_u_dKeywords = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
@@ -33,6 +42,14 @@ class KeywordsForm(forms.ModelForm):
         model = Keywords
         fields = ['keyword']
         labels = {'keyword': "Keyword"}
+
+    def clean_keyword(self):
+        keyword = self.cleaned_data['keyword']
+
+        if all(char.isalpha() for char in keyword) == False:
+            raise forms.ValidationError('Please enter letters and one word only')
+        return keyword 
+
 
 class VertebratesForm(forms.ModelForm):
     c_r_u_dVertebrates = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -47,6 +64,7 @@ class VertebratesForm(forms.ModelForm):
         model = Vertebrates
         fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'sources']
         labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords", 'sources': "Sources"}
+
 
 class InvertebratesForm(forms.ModelForm):
     c_r_u_dInvertebrates = forms.BooleanField(widget=forms.HiddenInput, initial=True)
