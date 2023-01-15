@@ -48,8 +48,103 @@ class AfricaPage(ListView):
         }
 
         return render(request, 'africa_tab.html', context)
-    
 
+# ANTARCTICA PAGE
+class AntarcticaPage(ListView):
+    template_name = 'antarctica_tab.html'
+
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='5').all(),
+            Invertebrates.objects.filter(country__continent='5').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'antarctica_tab.html', context)
+
+# ASIA PAGE
+class AsiaPage(ListView):
+    template_name = 'asia_tab.html'
+
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='1').all(),
+            Invertebrates.objects.filter(country__continent='1').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'asia_tab.html', context)
+
+# AUSTRALIA/OCEANIA PAGE
+class Aus_OceaniaPage(ListView):
+    template_name = 'aus-oceania_tab.html'
+
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='7').all(),
+            Invertebrates.objects.filter(country__continent='7').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'aus-oceania_tab.html', context)
+
+# EUROPE PAGE
+class EuropePage(ListView):
+    template_name = 'europe_tab.html'
+
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='6').all(),
+            Invertebrates.objects.filter(country__continent='6').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'europe_tab.html', context)
+
+# NORTH AMERICA PAGE
+class NorthAmericaPage(ListView):
+    template_name = 'north-america_tab.html'
+
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='3').all(),
+            Invertebrates.objects.filter(country__continent='3').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'north-america_tab.html', context)
+
+# SOUTH AMERICA PAGE
+class SouthAmericaPage(ListView):
+    template_name = 'south-america_tab.html'
+
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='4').all(),
+            Invertebrates.objects.filter(country__continent='4').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'south-america_tab.html', context)
+    
 # "createEntry" is for adding to database tables
 # Credit to Rafiq Hilali @ https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page
 def createEntry(request):

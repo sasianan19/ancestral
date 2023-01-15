@@ -12,7 +12,7 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-    <title>ancestral | Africa</title>
+    <title>ancestral | North America</title>
 </head>
 <body id="homeBackground" class="background">
     <div id="homeContainer">
@@ -23,7 +23,7 @@
                     <a class="nav-link" href="{% url 'homePage' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'africa' %}">Africa</a>
+                    <a class="nav-link" href="{% url 'africa' %}">Africa</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'antarctica' %}">Antarctica</a>
@@ -38,7 +38,7 @@
                     <a class="nav-link" href="{% url 'europe' %}">Europe</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'north-america' %}">North America</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'north-america' %}">North America</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'south-america' %}">South America</a>
@@ -46,7 +46,7 @@
             </ul>
         </div>
 
-        <h1>Africa</h1>
+        <h1>North America</h1>
 
         <!-- ACCORDION -->
         {% for info in content %}

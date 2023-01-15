@@ -27,5 +27,11 @@ urlpatterns = [
     path('home/', HomePage.as_view(), name='homePage'),
     path('search/', SearchResultsPage.as_view(), name='results'),
     path('africa', AfricaPage.as_view(), name='africa'),
+    path('antarctica', AntarcticaPage.as_view(), name='antarctica'),
+    path('asia', AsiaPage.as_view(), name='asia'),
+    path('australia-oceania', Aus_OceaniaPage.as_view(), name='aus-oceania'),
+    path('europe', EuropePage.as_view(), name='europe'),
+    path('north-america', NorthAmericaPage.as_view(), name='north-america'),
+    path('south-america', SouthAmericaPage.as_view(), name='south-america')
     
 ]
