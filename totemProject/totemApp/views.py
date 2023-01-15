@@ -1,6 +1,5 @@
 from django.shortcuts import (render, 
-                              redirect,
-                              HttpResponse)
+                              redirect)
 from totemApp.models import *
 from totemApp.forms import * 
 from django.views.generic import TemplateView, ListView
@@ -34,7 +33,22 @@ class SearchResultsPage(ListView):
         
         return object_list
     
+# AFRICA PAGE
+class AfricaPage(ListView):
+    template_name = 'africa_tab.html'
 
+    def get(self, request):
+        content = list(chain(
+            Vertebrates.objects.filter(country__continent='2').all(),
+            Invertebrates.objects.filter(country__continent='2').all()
+        ))
+
+        context = {
+        'content': content
+        }
+
+        return render(request, 'africa_tab.html', context)
+    
 
 # "createEntry" is for adding to database tables
 # Credit to Rafiq Hilali @ https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page

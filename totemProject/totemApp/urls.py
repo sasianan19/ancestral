@@ -26,5 +26,6 @@ urlpatterns = [
     path('ancestral/', LandingPage.as_view(), name='landingPage'),
     path('home/', HomePage.as_view(), name='homePage'),
     path('search/', SearchResultsPage.as_view(), name='results'),
+    path('africa', AfricaPage.as_view(), name='africa'),
     
 ]
