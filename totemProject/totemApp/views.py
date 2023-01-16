@@ -140,7 +140,7 @@ class SouthAmericaPage(ListView):
         ))
 
         context = {
-        'content': content
+        'content': content,
         }
 
         return render(request, 'south-america_tab.html', context)

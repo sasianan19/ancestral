@@ -62,8 +62,16 @@ class VertebratesForm(forms.ModelForm):
 
     class Meta:
         model = Vertebrates
-        fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'sources']
-        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords", 'sources': "Sources"}
+        fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'source_one', 'source_two', 'source_three']
+        labels = {'classification': "Class", 
+                'animal': "Animal", 
+                'country': "Country", 
+                'meaning': "Symbolic Meaning", 
+                'keywords': "Keywords",
+                'source_one': "Source 1",
+                'source_two': "Source 2",
+                'source_three': "Source 3"
+                }
 
 
 class InvertebratesForm(forms.ModelForm):
@@ -76,5 +84,13 @@ class InvertebratesForm(forms.ModelForm):
     
     class Meta:
         model = Invertebrates
-        fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'sources']
-        labels = {'classification': "Class", 'animal': "Animal", 'country': "Country", 'meaning': "Symbolic Meaning", 'keywords': "Keywords", 'sources': "Sources"}
+        fields = ['classification', 'animal', 'country', 'meaning', 'keywords', 'source_one', 'source_two', 'source_three']
+        labels = {'classification': "Class",
+                'animal': "Animal", 
+                'country': "Country", 
+                'meaning': "Symbolic Meaning", 
+                'keywords': "Keywords",
+                'source_one': "Source 1",
+                'source_two': "Source 2",
+                'source_three': "Source 3"
+                 }
