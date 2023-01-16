@@ -58,6 +58,13 @@
                 {% for keyword in info.keywords.all %}
                     <p style="display: inline">{{ keyword.keyword }}</p>
                 {% endfor %}
+                <a href="{{ info.source_one }}" target="blank">source 1</a>
+                {% if info.source_two %}
+                <a href="{{ info.source_two }}" target="blank">source 2</a>
+                {% endif %}
+                {% if info.source_three %}
+                <a href="{{ info.source_three }}" target="blank">source 3</a>
+                {% endif %}
             </div>
         {% endfor %}
         <!-- ADD SPACE IN CSS! -->
