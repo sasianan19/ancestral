@@ -40,11 +40,13 @@ class AfricaPage(ListView):
     def get(self, request):
         content = list(chain(
             Vertebrates.objects.filter(country__continent='2').all(),
-            Invertebrates.objects.filter(country__continent='2').all()
+            Invertebrates.objects.filter(country__continent='2').all(),
         ))
+        countries = Countries.objects.filter(continent='2').order_by('country')
 
         context = {
-        'content': content
+        'content': content,
+        'countries': countries
         }
 
         return render(request, 'africa_tab.html', context)
@@ -58,9 +60,11 @@ class AntarcticaPage(ListView):
             Vertebrates.objects.filter(country__continent='5').all(),
             Invertebrates.objects.filter(country__continent='5').all()
         ))
+        countries = Countries.objects.filter(continent='5').order_by('country')
 
         context = {
-        'content': content
+        'content': content, 
+        'countries': countries
         }
 
         return render(request, 'antarctica_tab.html', context)
@@ -74,9 +78,11 @@ class AsiaPage(ListView):
             Vertebrates.objects.filter(country__continent='1').all(),
             Invertebrates.objects.filter(country__continent='1').all()
         ))
+        countries = Countries.objects.filter(continent='1').order_by('country')
 
         context = {
-        'content': content
+        'content': content,
+        'countries': countries
         }
 
         return render(request, 'asia_tab.html', context)
@@ -90,9 +96,11 @@ class Aus_OceaniaPage(ListView):
             Vertebrates.objects.filter(country__continent='7').all(),
             Invertebrates.objects.filter(country__continent='7').all()
         ))
+        countries = Countries.objects.filter(continent='7').order_by('country')
 
         context = {
-        'content': content
+        'content': content,
+        'countries': countries
         }
 
         return render(request, 'aus-oceania_tab.html', context)
@@ -106,9 +114,11 @@ class EuropePage(ListView):
             Vertebrates.objects.filter(country__continent='6').all(),
             Invertebrates.objects.filter(country__continent='6').all()
         ))
+        countries = Countries.objects.filter(continent='6').order_by('country')
 
         context = {
-        'content': content
+        'content': content,
+        'countries': countries
         }
 
         return render(request, 'europe_tab.html', context)
@@ -122,9 +132,11 @@ class NorthAmericaPage(ListView):
             Vertebrates.objects.filter(country__continent='3').all(),
             Invertebrates.objects.filter(country__continent='3').all()
         ))
+        countries = Countries.objects.filter(continent='3').order_by('country')
 
         context = {
-        'content': content
+        'content': content,
+        'countries': countries
         }
 
         return render(request, 'north-america_tab.html', context)
@@ -138,9 +150,11 @@ class SouthAmericaPage(ListView):
             Vertebrates.objects.filter(country__continent='4').all(),
             Invertebrates.objects.filter(country__continent='4').all()
         ))
+        countries = Countries.objects.filter(continent='4').order_by('country')
 
         context = {
         'content': content,
+        'countries': countries
         }
 
         return render(request, 'south-america_tab.html', context)

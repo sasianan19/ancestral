@@ -49,23 +49,28 @@
         <h1>Africa</h1>
 
         <!-- ACCORDION -->
-        {% for info in content %}
-            <h6>{{ info.country }}:</h6>
-            <button class="accordion">{{ info.animal }}</button>
-            <div class="panel">
-                <p>{{ info.classification }}</p>
-                <p>{{ info.meaning }}</p>
-                {% for keyword in info.keywords.all %}
-                    <p style="display: inline">{{ keyword.keyword }}</p>
-                {% endfor %}
-                <a href="{{ info.source_one }}" target="blank">source 1</a>
-                {% if info.source_two %}
-                <a href="{{ info.source_two }}" target="blank">source 2</a>
+        {% for country in countries %}
+            <h6>{{ country.country }}:</h6>
+            {% for info in content %}
+                {% if info.country == country %}
+                    <button class="accordion">{{ info.animal }}</button>
+                    <div class="panel">
+                        <p>{{ info.classification }}</p>
+                        <p>{{ info.meaning }}</p>
+                        {% for keyword in info.keywords.all %}
+                            <p style="display: inline">{{ keyword.keyword }}</p>
+                        {% endfor %}
+                        <a href="{{ info.source_one }}" target="blank">source 1</a>
+                        {% if info.source_two %}
+                            <a href="{{ info.source_two }}" target="blank">source 2</a>
+                        {% endif %}
+                        {% if info.source_three %}
+                            <a href="{{ info.source_three }}" target="blank">source 3</a>
+                        {% endif %}
+                    </div>
+                {% else %}
                 {% endif %}
-                {% if info.source_three %}
-                <a href="{{ info.source_three }}" target="blank">source 3</a>
-                {% endif %}
-            </div>
+            {% endfor %}
         {% endfor %}
         <!-- ADD SPACE IN CSS! -->
 
