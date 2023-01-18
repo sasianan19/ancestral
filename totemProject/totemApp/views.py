@@ -17,21 +17,35 @@ class HomePage(TemplateView):
 
 # SEARCH RESULTS PAGE
 class SearchResultsPage(ListView):
+    context_object_name = 'data'
+
     template_name='search_results_page.html'
 
-    def get_queryset(self):  
+    def get_queryset(self):
         query = self.request.GET.get("q")
-        object_list = list(chain(
+        myset = {
+            'animalsList': list(chain(
             Vertebrates.objects.filter(
                 Q(animal__icontains=query) | Q(classification__classification__icontains=query) |
                 Q(country__country__icontains=query)),
             Invertebrates.objects.filter(
                 Q(animal__icontains=query) | Q(classification__classification__icontains=query) |
-                Q(country__country__icontains=query))
-            )
-        )
-        
-        return object_list
+                Q(country__country__icontains=query)),
+            )),
+            'animalsKeywords': list(chain(
+                Vertebrates.objects.filter(Q(keywords__keyword__icontains=query)),
+                Invertebrates.objects.filter(Q(keywords__keyword__icontains=query))
+            )),
+            'countries': Countries.objects.filter(country__icontains=query),
+            'class': AnimalClass.objects.filter(classification__icontains=query),
+            'animalNames': list(chain(
+                Vertebrates.objects.filter(animal__icontains=query),
+                Invertebrates.objects.filter(animal__icontains=query)
+            )),
+            'keywordsList': Keywords.objects.filter(keyword__icontains=query)
+        }
+
+        return myset
     
 # AFRICA PAGE
 class AfricaPage(ListView):

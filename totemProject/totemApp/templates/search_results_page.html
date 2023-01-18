@@ -23,48 +23,129 @@
                     <a class="nav-link" href="{% url 'homePage' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Africa</a>
+                    <a class="nav-link" href="{% url 'africa' %}">Africa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Antarctica</a>
+                    <a class="nav-link" href="{% url 'antarctica' %}">Antarctica</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Asia</a>
+                    <a class="nav-link" href="{% url 'asia' %}">Asia</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Australia/Oceania</a>
+                    <a class="nav-link" href="{% url 'aus-oceania' %}">Australia/Oceania</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Europe</a>
+                    <a class="nav-link" href="{% url 'europe' %}">Europe</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">North America</a>
+                    <a class="nav-link" href="{% url 'north-america' %}">North America</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">South America</a>
+                    <a class="nav-link" href="{% url 'south-america' %}">South America</a>
                 </li>
             </ul>
         </div>
-
+            
         <div id="resultsDiv">
-            {% for animal in object_list %}
-                <h3>
-                    {{ animal.animal }} - {{ animal.classification }} 
+            <!-- RESULTS BY ANIMAL -->
+            {% for name in data.animalNames %}
+                <h1><u>{{ name.animal }}</u></h1>
+                {% for animal in data.animalsList %}
+                    <h4>{{ animal.country }} ({{ animal.country.continent }}):</h4>
+                    <p>{{ animal.meaning }}</p>
+                    <h6>Keywords:</h6>
+                    {% for keyword in animal.keywords.all %}
+                        <p style="display: inline">{{ keyword.keyword }}</p>
+                    {% endfor %}
                     <br>
-                    {{ animal.country }} ({{ animal.country.continent }}):
-                </h3>
-                <p>{{ animal.meaning }}</p>
-                <br>
-                <h6>Keywords:</h6>
-                <ul>
-                {% for keyword in animal.keywords.all %}
-                    <li>{{ keyword.keyword }}</li>
-                {% endfor %}  
-                </ul>  
-            {% endfor %}   
-    
-            {% if not object_list %}
-                <p>Sorry, that hasn't been added yet!</p>
+                    <br>
+                    <h6>Sources:</h6>
+                    <a href="{{ animal.source_one }}" target="blank">source 1</a>
+                    {% if animal.source_two %}
+                        <a href="{{ animal.source_two }}" target="blank">source 2</a>
+                    {% endif %}
+                    {% if animal.source_three %}
+                        <a href="{{ animal.source_three }}" target="blank">source 3</a>
+                    {% endif %}
+                    <hr>
+                {% endfor %} 
+            {% endfor %}
+
+            <!-- RESULTS BY ANIMAL CLASSIFICATION  -->
+            {% for class in data.class %}
+                <h1><u>{{ class }}s</u></h1>
+                {% for animal in data.animalsList %}
+                    <h4>{{ animal.animal }} - {{ animal.country }} ({{ animal.country.continent }}):</h4>
+                    <p>{{ animal.meaning }}</p>
+                    <h6>Keywords:</h6>
+                    {% for keyword in animal.keywords.all %}
+                        <p style="display: inline">{{ keyword.keyword }}</p>
+                    {% endfor %}
+                    <br>
+                    <br>
+                    <h6>Sources:</h6>
+                    <a href="{{ animal.source_one }}" target="blank">source 1</a>
+                    {% if animal.source_two %}
+                        <a href="{{ animal.source_two }}" target="blank">source 2</a>
+                    {% endif %}
+                    {% if animal.source_three %}
+                        <a href="{{ animal.source_three }}" target="blank">source 3</a>
+                    {% endif %}
+                    <hr>
+                {% endfor %}
+            {% endfor %}
+
+            <!-- RESULTS BY COUNTRY -->
+            {% for country in data.countries %}
+                <h1><u>{{ country }}</u></h1>
+                {% for animal in data.animalsList %}
+                    <h4>{{ animal.animal }}:</h4>
+                    <p>{{ animal.meaning }}</p>
+                    <h6>Keywords:</h6>
+                    {% for keyword in animal.keywords.all %}
+                        <p style="display: inline">{{ keyword.keyword }}</p>
+                    {% endfor %}
+                    <br>
+                    <br>
+                    <h6>Sources:</h6>
+                    <a href="{{ animal.source_one }}" target="blank">source 1</a>
+                    {% if animal.source_two %}
+                        <a href="{{ animal.source_two }}" target="blank">source 2</a>
+                    {% endif %}
+                    {% if animal.source_three %}
+                        <a href="{{ animal.source_three }}" target="blank">source 3</a>
+                    {% endif %}
+                    <hr>
+                {% endfor %}
+            {% endfor %} 
+
+            <!-- RESULTS BY KEYWORD -->
+            {% for keyword in data.keywordsList %}
+                <h1><u>{{ keyword }}</u></h1>
+                {% for animal in data.animalsKeywords %}
+                    <h4>{{ animal.animal }} - {{ animal.country }} ({{ animal.country.continent }}):</h4>
+                    <p>{{ animal.meaning }}</p>
+                    <h6>Keywords:</h6>
+                    {% for keyword in animal.keywords.all %}
+                        <p style="display: inline">{{ keyword.keyword }}</p>
+                    {% endfor %}
+                    <br>
+                    <br>
+                    <h6>Sources:</h6>
+                    <a href="{{ animal.source_one }}" target="blank">source 1</a>
+                    {% if animal.source_two %}
+                        <a href="{{ animal.source_two }}" target="blank">source 2</a>
+                    {% endif %}
+                    {% if animal.source_three %}
+                        <a href="{{ animal.source_three }}" target="blank">source 3</a>
+                    {% endif %}
+                    <hr>
+                {% endfor %}
+            {% endfor %}
+
+            <!-- IF QUERY NOT PRESENT IN DATA  -->
+            {% if not data.animalsList and not data.animalsKeywords %}
+                <p>Sorry, no entries for your search yet!</p>
             {% endif %}
         </div> 
     </div>
